@@ -5,7 +5,7 @@ class Game
   def initialize(player1, player2)
     @player_1 = player1
     @player_2 = player2
-    @game_board = GameBoard.new([0,1,2,3,4,5,6,7,8,9])
+    @game_board = GameBoard.new
     @turn = 1
     @lines = [
               [1,2,3],[4,5,6],[7,8,9],
@@ -15,7 +15,6 @@ class Game
     start
   end
 
-  private
   def start()
     until (who_wins?() || @game_board.full?())
       @turn == 1 ? plays(@player_1) : plays(@player_2)
@@ -72,5 +71,3 @@ def start_game()
   puts `clear`
   start_game unless reply.downcase == "n"
 end
-
-start_game
